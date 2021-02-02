@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<srx version="2.0"
+     xmlns="http://www.lisa.org/srx20"
+     xsi:schemaLocation="http://www.lisa.org/srx20 srx20.xsd"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <header segmentsubflows="yes" cascade="yes">
+    <formathandle type="start" include="no"/>
+    <formathandle type="end" include="yes"/>
+    <formathandle type="isolated" include="yes"/>
+  </header>
+  <body>
+    <languagerules>
+      <languagerule languagerulename="Default">
+        <!-- Common rules for most languages -->
+        <rule break="no">
+          <beforebreak>^\s*[0-9]+\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="yes">
+          <afterbreak>\n</afterbreak>
+        </rule>
+        <rule break="yes">
+          <beforebreak>[\.\?!]+</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="English">
+        <rule break="no">
+          <beforebreak>etc\.</beforebreak>
+          <afterbreak>\s+\P{Lu}</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>Dr\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>U\.K\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>M\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>Mr\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>Mrs\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>Ms\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>Prof\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(?i)e\.g\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(?i)i\.e\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>resp\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\stel\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>(?i)fig\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>St\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s[A-Z]\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[apAP]\.?[mM]\.</beforebreak>
+          <afterbreak>\s[a-z]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>Mt\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>No\.</beforebreak>
+          <afterbreak>\s\d</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[Aa]pprox\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d\smi?n\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\d\ssec\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>\s[vV][sS]?\.</beforebreak>
+          <afterbreak>\s</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Japanese">
+        <rule break="no">
+          <beforebreak>[。．？！]</beforebreak>
+          <afterbreak>[）)]</afterbreak>
+        </rule>
+
+        <!-- JA Japanese break rules -->
+        <rule break="yes">
+          <beforebreak>[。．？！]</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+      </languagerule>
+      <languagerule languagerulename="Chinese">
+        <rule break="no">
+          <beforebreak>[。？！—]</beforebreak>
+          <afterbreak>[’”"」）』？—]</afterbreak>
+        </rule>
+        <rule break="no">
+          <beforebreak>[、,.．]</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+
+        <!-- ZH Chinese break rules -->
+        <rule break="yes">
+          <beforebreak>[。？！]</beforebreak>
+          <afterbreak>.</afterbreak>
+        </rule>
+      </languagerule>
+    </languagerules>
+    <maprules>
+      <!-- List exceptions first -->
+      <languagemap languagepattern="[Ee][Nn].*" languagerulename="English"/>
+      <languagemap languagepattern="[Zz][Hh]-[Cc][Nn].*" languagerulename="Chinese" />
+      <!-- Japanese breaking rules -->
+      <languagemap languagepattern="[Jj][Aa].*" languagerulename="Japanese"/>
+      <!-- Common breaking rules -->
+      <languagemap languagepattern=".*" languagerulename="Default"/>
+    </maprules>
+  </body>
+</srx>
