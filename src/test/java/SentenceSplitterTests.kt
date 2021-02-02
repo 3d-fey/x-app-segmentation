@@ -1,6 +1,8 @@
+import net.sf.okapi.common.LocaleId
+
 fun main(args: Array<String>) {
     splitChinese()
-    println("-".padEnd(20,'-'))
+    println("-".padEnd(20, '-'))
     splitEnglish()
 }
 
@@ -10,7 +12,7 @@ fun splitChinese() {
             "我有一个梦想。你还好吗？不用谢！",
             "最基本的分句形式。"
     )
-    split("zh", texts)
+    split(LocaleId.CHINA_CHINESE, texts)
 }
 
 fun splitEnglish() {
@@ -19,10 +21,10 @@ fun splitEnglish() {
             "Mr.Shi Are you OK?",
             "Open source projects can exist only because of the resources provided by some people and companies:"
     )
-    split("en", texts, " ")
+    split(LocaleId.ENGLISH, texts, " ")
 }
 
-private fun split(lang: String, texts: List<String>, separator: String = "") {
+private fun split(lang: LocaleId, texts: List<String>, separator: String = "") {
     val list = SentenceSplitter.segment(lang, texts.joinToString(separator))
     for (l in list) {
         println(l)
