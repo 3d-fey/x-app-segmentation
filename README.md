@@ -9,6 +9,6 @@ SRX（Segmentation Rules eXchange）是专门用于表示句段分割规则的�
 ### 开源实现-Srx
 [Segment](https://github.com/loomchild/segment)
 
-[Omegat Segmentation](https://github.com/omegat-org/omegat/tree/master/src/org/omegat/core/segmentation) - 目前实现
+[Omegat Segmentation](https://github.com/omegat-org/omegat/tree/master/src/org/omegat/core/segmentation) 
 
-[OkApi Segmentation](https://bitbucket.org/okapiframework/okapi/src/dev/okapi/libraries/lib-segmentation)
+[OkApi Segmentation](https://bitbucket.org/okapiframework/okapi/src/dev/okapi/libraries/lib-segmentation) - 目前实现
